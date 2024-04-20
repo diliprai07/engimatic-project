@@ -6,6 +6,7 @@ import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import router from './router';
+import { errorHandler } from './middlewares/error-handler';
 
 const app = express();
 
@@ -37,3 +38,6 @@ mongoose.connection.on('error', (error: Error) => console.log(error));
 app.use('/api/v1', router());
 // swagger docs route/..
 app.use('/api-docs', require('./helpers/swagger'));
+
+// global error handler
+app.use(errorHandler);

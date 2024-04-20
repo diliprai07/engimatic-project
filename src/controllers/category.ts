@@ -55,6 +55,8 @@ export const deleteByCategory = async (
 ) => {
   try {
     const { id } = req.params;
+
+    
     const deletedData = await deleteByCategoryId(id);
 
     return res.status(200).json(deletedData).end();
