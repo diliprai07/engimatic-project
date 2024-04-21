@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const WorkExperienceSchema = new Schema({
   startDateYear: {
@@ -32,3 +32,5 @@ const WorkExperienceSchema = new Schema({
     required: true,
   },
 });
+
+export const WorkModel = mongoose.model('Work', WorkExperienceSchema);

@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 export enum ScoreType {
   percentage = 'percentage',
   cgpa = 'cgpa',
@@ -24,9 +24,11 @@ const EductionSchema = new Schema({
     type: String,
   },
   scoreType: {
-    type: ScoreType,
+    type: Number,
   },
   remarks: {
     type: String,
   },
 });
+
+export const EducationModel = mongoose.model('Education', EductionSchema);
