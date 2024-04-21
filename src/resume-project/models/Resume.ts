@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const ResumeSchema = new Schema({
   eduction: {
@@ -32,3 +32,5 @@ const ResumeSchema = new Schema({
     required: true,
   },
 });
+
+export const ResumeModel = mongoose.model('Resume', ResumeSchema);

@@ -6,6 +6,7 @@ import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import router from './router';
+import resumeRouter from './resume-project/router';
 import { errorHandler } from './middlewares/error-handler';
 
 const app = express();
@@ -15,8 +16,6 @@ app.use(
     credentials: true,
   }),
 );
-
-
 
 app.use(compression());
 app.use(cookieParser());
@@ -34,7 +33,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 
 mongoose.connection.on('error', (error: Error) => console.log(error));
-
+app.use('/api/v1/resume', resumeRouter());
 app.use('/api/v1', router());
 // swagger docs route/..
 app.use('/api-docs', require('./helpers/swagger'));
