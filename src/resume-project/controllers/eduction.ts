@@ -7,11 +7,12 @@ export const createEducation = async (
 ) => {
   try {
     const values = req.body;
-    const education = await new EducationModel(values)
-      .save()
-      .then((savedItem) => savedItem.toObject());
+    const educations = await EducationModel.insertMany(values);
+    // const education = await new EducationModel(values)
+    //   .save()
+    //   .then((savedItem) => savedItem.toObject());
 
-    return res.status(200).json(education).end();
+    return res.status(200).json(educations).end();
   } catch (error) {
     return res.sendStatus(400);
   }

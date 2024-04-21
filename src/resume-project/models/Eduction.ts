@@ -4,7 +4,7 @@ export enum ScoreType {
   cgpa = 'cgpa',
   other = 'other',
 }
-const EductionSchema = new Schema({
+export const EductionSchema = new Schema({
   institution: {
     type: String,
     required: true,
@@ -24,7 +24,7 @@ const EductionSchema = new Schema({
     type: String,
   },
   scoreType: {
-    type: Number,
+    type: String,
   },
   remarks: {
     type: String,

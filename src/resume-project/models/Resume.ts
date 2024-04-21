@@ -1,26 +1,31 @@
 import mongoose, { Schema } from 'mongoose';
+import { EducationModel, EductionSchema } from './Eduction';
 
 const ResumeSchema = new Schema({
-  eduction: {
-    type: Schema.Types.ObjectId,
-    ref: 'Education',
-  },
-  work: {
-    type: Schema.Types.ObjectId,
-    ref: 'Work',
-  },
+  educations: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Education',
+    },
+  ],
+  works: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Work',
+    },
+  ],
   introduction: {
     type: String,
     required: true,
   },
   age: {
-    type: String,
+    type: Number,
   },
   email: {
     type: String,
     required: true,
   },
-  linkedInd: {
+  linkedInId: {
     type: String,
   },
   phoneNumber: {
