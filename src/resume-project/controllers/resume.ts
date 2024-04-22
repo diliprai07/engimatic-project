@@ -28,3 +28,19 @@ export const createResume = async (
     return res.sendStatus(400);
   }
 };
+
+export const getResumesByEmail = async (
+  req: express.Request,
+  res: express.Response,
+) => {
+  try {
+    const email = req?.query?.email;
+    const resumes = await ResumeModel.find({
+      email: email,
+    });
+
+    return res.status(200).json(resumes).end();
+  } catch (error) {
+    return res.sendStatus(400);
+  }
+};
