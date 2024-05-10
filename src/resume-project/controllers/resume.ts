@@ -9,19 +9,19 @@ export const createResume = async (
 ) => {
   try {
     const values = req.body;
-    const { educations, works, ...resumeData } = values;
-    const newEducations = await EducationModel.insertMany(educations); // Insert multiple education objects
-    const newWorks = await WorkModel.insertMany(works);
+    const { generalInformation, education, workExperience } = values;
+    const newEducations = await EducationModel.insertMany(education); // Insert multiple education objects
+    const newWorks = await WorkModel.insertMany(workExperience);
 
     const resume = new ResumeModel({
-      ...resumeData,
-      educations: newEducations.map((education) => education._id),
-      works: newWorks.map((work) => work._id),
+      generalInformation: generalInformation,
+      education: newEducations.map((education) => education._id),
+      workExperience: newWorks.map((work) => work._id),
     });
 
     const newResume = await (
-      await (await resume.save()).populate('educations')
-    ).populate('works');
+      await (await resume.save()).populate('education')
+    ).populate('workExperience');
 
     return res.status(200).json(newResume).end();
   } catch (error) {

@@ -33,4 +33,4 @@ const WorkExperienceSchema = new Schema({
   },
 });
 
-export const WorkModel = mongoose.model('Work', WorkExperienceSchema);
+export const WorkModel = mongoose.model('WorkExperience', WorkExperienceSchema);
