@@ -36,9 +36,10 @@ export const getResumesByEmail = async (
   try {
     const email = req?.query?.email;
     const resumes = await ResumeModel.find({
-      email: email,
-    });
-
+      'generalInformation.email': email,
+    })
+      .populate('education')
+      .populate('workExperience');
     return res.status(200).json(resumes).end();
   } catch (error) {
     return res.sendStatus(400);
