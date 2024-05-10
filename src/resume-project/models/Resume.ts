@@ -2,39 +2,41 @@ import mongoose, { Schema } from 'mongoose';
 import { EducationModel, EductionSchema } from './Eduction';
 
 const ResumeSchema = new Schema({
-  educations: [
+  education: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Education',
     },
   ],
-  works: [
+  workExperience: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Work',
+      ref: 'WorkExperience',
     },
   ],
-  introduction: {
-    type: String,
-    required: true,
-  },
-  age: {
-    type: Number,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  linkedInId: {
-    type: String,
-  },
-  phoneNumber: {
-    type: String,
-    required: true,
-  },
-  address: {
-    type: String,
-    required: true,
+  generalInformation: {
+    introduction: {
+      type: String,
+      required: true,
+    },
+    age: {
+      type: Number,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    linkedInId: {
+      type: String,
+    },
+    phoneNumber: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
   },
 });
 
