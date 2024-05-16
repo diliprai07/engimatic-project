@@ -36,6 +36,7 @@ mongoose.connect(MONGO_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
 
 app.use('/api/v1', router());
+
 // swagger docs route/..
 app.use('/api-docs', require('./helpers/swagger'));
 
